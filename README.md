@@ -22,7 +22,7 @@ All examples below assume you already have the setup above in your file.
 
 
 
-## `from()`
+### `from()`
 
 Chooses the table you want to query.
 
@@ -65,7 +65,7 @@ QueryResult Object
 
 ---
 
-## `select()`
+### `select()`
 
 Chooses which columns to return from the table.
 
