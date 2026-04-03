@@ -87,6 +87,115 @@ print_r($result->data);
 
 ---
 
+### `query()`
+
+Runs a raw SQL query with optional bound parameters.
+
+### SYNTAX
+
+```php
+$db->query('SELECT * FROM users WHERE status = :status', [
+    'status' => 'active',
+])
+```
+
+### CODE
+
+```php
+$result = $db->query(
+    'SELECT * FROM users WHERE status = :status',
+    [
+        'status' => 'active',
+    ]
+);
+```
+
+### OUTPUT
+
+Use `$result->data` to get the actual information you want.
+
+```php
+QueryResult Object
+(
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [name] => Mark
+                    [email] => mark@example.com
+                    [status] => active
+                )
+        )
+
+    [rowCount] => 1
+    [sql] => SELECT * FROM users WHERE status = :status
+    [bindings] => Array
+        (
+            [status] => active
+        )
+)
+```
+
+Raw CRUD examples:
+
+#### CREATE
+
+```php
+$result = $db->query(
+    'INSERT INTO users (name, email, status) VALUES (:name, :email, :status) RETURNING *',
+    [
+        'name' => 'John Doe',
+        'email' => 'john@example.com',
+        'status' => 'active',
+    ]
+);
+
+print_r($result->data);
+```
+
+#### READ
+
+```php
+$result = $db->query(
+    'SELECT * FROM users WHERE status = :status',
+    [
+        'status' => 'active',
+    ]
+);
+
+print_r($result->data);
+```
+
+#### UPDATE
+
+```php
+$result = $db->query(
+    'UPDATE users SET status = :status WHERE id = :id RETURNING *',
+    [
+        'status' => 'inactive',
+        'id' => 5,
+    ]
+);
+
+print_r($result->data);
+```
+
+#### DELETE
+
+```php
+$result = $db->query(
+    'DELETE FROM users WHERE id = :id RETURNING *',
+    [
+        'id' => 5,
+    ]
+);
+
+print_r($result->data);
+```
+
+---
+
 ### `from()`
 
 Chooses the table you want to query.
@@ -223,6 +332,60 @@ QueryResult Object
         (
             [:p0] => Mark
             [:p1] => mark@example.com
+            [:p2] => active
+        )
+)
+```
+
+---
+
+### `upsert()`
+
+Inserts a row if it does not exist, or updates it if a conflict happens on a unique column.
+
+### SYNTAX
+
+```php
+->upsert([
+    'email' => 'mark@example.com',
+    'name' => 'Mark',
+], ['email'])
+```
+
+### CODE
+
+```php
+$result = $db
+    ->from('users')
+    ->upsert([
+        'email' => 'mark@example.com',
+        'name' => 'Mark Updated',
+        'status' => 'active',
+    ], ['email'])
+    ->select()
+    ->single();
+```
+
+### OUTPUT
+
+Use `$result->data` to get the actual information you want.
+
+```php
+QueryResult Object
+(
+    [data] => Array
+        (
+            [email] => mark@example.com
+            [name] => Mark Updated
+            [status] => active
+        )
+
+    [rowCount] => 1
+    [sql] => INSERT INTO "users" ("email", "name", "status") VALUES (:p0, :p1, :p2) ON CONFLICT ("email") DO UPDATE SET "name" = EXCLUDED."name", "status" = EXCLUDED."status" RETURNING *
+    [bindings] => Array
+        (
+            [:p0] => mark@example.com
+            [:p1] => Mark Updated
             [:p2] => active
         )
 )
@@ -551,6 +714,44 @@ QueryResult Object
 
 ---
 
+### `between()`
+
+Filters rows where a column value is between two values.
+
+### SYNTAX
+
+```php
+->between('column_name', 100, 500)
+```
+
+### CODE
+
+```php
+$result = $db
+    ->from('orders')
+    ->select('*')
+    ->between('total', 100, 500)
+    ->execute();
+```
+
+### OUTPUT
+
+Use `$result->data` to get the actual information you want.
+
+```php
+QueryResult Object
+(
+    [sql] => SELECT * FROM "orders" WHERE "total" BETWEEN :p0 AND :p1
+    [bindings] => Array
+        (
+            [:p0] => 100
+            [:p1] => 500
+        )
+)
+```
+
+---
+
 ### `like()`
 
 Filters rows using SQL `LIKE`.
@@ -695,6 +896,43 @@ QueryResult Object
     [sql] => SELECT * FROM "users" WHERE "deleted_at" IS NULL
     [bindings] => Array
         (
+        )
+)
+```
+
+---
+
+### `not()`
+
+Adds a negated condition to your query.
+
+### SYNTAX
+
+```php
+->not('column_name', '=', 'value')
+```
+
+### CODE
+
+```php
+$result = $db
+    ->from('users')
+    ->select('*')
+    ->not('status', '=', 'banned')
+    ->execute();
+```
+
+### OUTPUT
+
+Use `$result->data` to get the actual information you want.
+
+```php
+QueryResult Object
+(
+    [sql] => SELECT * FROM "users" WHERE NOT ("status" = :p0)
+    [bindings] => Array
+        (
+            [:p0] => banned
         )
 )
 ```
@@ -896,6 +1134,40 @@ QueryResult Object
 
 ---
 
+### `pluck()`
+
+Returns a flat array of values from one column instead of full rows.
+
+### SYNTAX
+
+```php
+->pluck('column_name')
+```
+
+### CODE
+
+```php
+$emails = $db
+    ->from('users')
+    ->eq('status', 'active')
+    ->pluck('email');
+```
+
+### OUTPUT
+
+Use the returned array directly to get the actual information you want.
+
+```php
+Array
+(
+    [0] => mark@example.com
+    [1] => jane@example.com
+    [2] => john@example.com
+)
+```
+
+---
+
 ### `single()`
 
 Returns exactly one row. It throws an exception if zero rows or more than one row are found.
@@ -942,6 +1214,42 @@ QueryResult Object
 
 ---
 
+### `first()`
+
+Returns the first matching row, or `null` if no row is found.
+
+### SYNTAX
+
+```php
+->first()
+```
+
+### CODE
+
+```php
+$user = $db
+    ->from('users')
+    ->select('*')
+    ->eq('status', 'active')
+    ->first();
+```
+
+### OUTPUT
+
+Use the returned array directly to get the actual information you want.
+
+```php
+Array
+(
+    [id] => 1
+    [name] => Mark
+    [email] => mark@example.com
+    [status] => active
+)
+```
+
+---
+
 ### `maybeSingle()`
 
 Returns one row if it exists. If nothing matches, `$result->data` is `null`.
@@ -964,6 +1272,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -979,17 +1289,76 @@ QueryResult Object
 
 ---
 
+### `exists()`
+
+Checks whether at least one row matches your filters.
+
+### SYNTAX
+
+```php
+->exists()
+```
+
+### CODE
+
+```php
+$exists = $db
+    ->from('users')
+    ->eq('email', 'mark@example.com')
+    ->exists();
+```
+
+### OUTPUT
+
+Use the returned boolean directly to get the actual information you want.
+
+```php
+true
+```
+
+---
+
+### `count()`
+
+Counts how many rows match your filters.
+
+### SYNTAX
+
+```php
+->count()
+->count('column_name')
+```
+
+### CODE
+
+```php
+$total = $db
+    ->from('users')
+    ->eq('status', 'active')
+    ->count();
+```
+
+### OUTPUT
+
+Use the returned integer directly to get the actual information you want.
+
+```php
+42
+```
+
+---
+
 ### `execute()`
 
 Runs the built query and returns a `QueryResult` object.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->execute()
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -1001,7 +1370,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 Use `$result->data` to get the actual information you want.
 
