@@ -24,7 +24,7 @@ All examples below assume you already have the setup above in your file.
 
 ---
 
-### `from()`
+### from()
 
 Chooses the table you want to query.
 
