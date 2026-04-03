@@ -45,6 +45,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -88,6 +90,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -136,6 +140,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -188,6 +194,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -232,6 +240,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -278,6 +288,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -312,6 +324,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -348,6 +362,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -382,6 +398,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -418,6 +436,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -452,6 +472,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -488,6 +510,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -523,6 +547,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -557,6 +583,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -595,6 +623,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -635,6 +665,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -695,6 +727,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -728,6 +762,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -783,6 +819,8 @@ $result = $db
 
 ### OUTPUT
 
+Use `$result->data` to get the actual information you want.
+
 ```php
 QueryResult Object
 (
@@ -816,6 +854,8 @@ $result = $db
 ```
 
 ### OUTPUT
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
@@ -899,6 +939,8 @@ $result = $db
 ```
 
 ### Sample Result
+
+Use `$result->data` to get the actual information you want.
 
 ```php
 QueryResult Object
