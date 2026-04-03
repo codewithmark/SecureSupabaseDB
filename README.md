@@ -20,7 +20,7 @@ $db = SecureSupabaseDB::connect(
 
 All examples below assume you already have the setup above in your file.
 
----
+
 
 ## `from()`
 
