@@ -20,9 +20,7 @@ $db = SecureSupabaseDB::connect(
 
 All examples below assume you already have the setup above in your file.
 
-
-
-### `from()`
+## `from()`
 
 Chooses the table you want to query.
 
@@ -63,9 +61,7 @@ QueryResult Object
 )
 ```
 
----
-
-### `select()`
+## `select()`
 
 Chooses which columns to return from the table.
 
@@ -103,8 +99,6 @@ QueryResult Object
     [sql] => SELECT "id", "name", "email" FROM "users"
 )
 ```
-
----
 
 ## `insert()`
 
@@ -157,8 +151,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `update()`
 
 Updates rows that match your filters.
@@ -206,8 +198,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `delete()`
 
 Deletes rows that match your filters.
@@ -252,8 +242,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `eq()`
 
 Filters rows where a column is equal to a value.
@@ -286,8 +274,6 @@ QueryResult Object
         )
 )
 ```
-
----
 
 ## `neq()`
 
@@ -322,8 +308,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `gt()`
 
 Filters rows where a column is greater than a value.
@@ -356,8 +340,6 @@ QueryResult Object
         )
 )
 ```
-
----
 
 ## `gte()`
 
@@ -392,8 +374,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `lt()`
 
 Filters rows where a column is less than a value.
@@ -426,8 +406,6 @@ QueryResult Object
         )
 )
 ```
-
----
 
 ## `lte()`
 
@@ -462,8 +440,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `like()`
 
 Filters rows using SQL `LIKE`.
@@ -497,8 +473,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `ilike()`
 
 Filters rows with a case-insensitive text match.
@@ -531,8 +505,6 @@ QueryResult Object
         )
 )
 ```
-
----
 
 ## `in()`
 
@@ -569,8 +541,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `is()`
 
 Filters rows using `IS NULL`, `IS TRUE`, or `IS FALSE`.
@@ -603,8 +573,6 @@ QueryResult Object
         )
 )
 ```
-
----
 
 ## `or()`
 
@@ -668,8 +636,6 @@ WHERE "country" = :p0
 AND ("status" = :p1 OR "role" = :p2)
 ```
 
----
-
 ## `order()`
 
 Sorts the returned rows.
@@ -702,8 +668,6 @@ QueryResult Object
         )
 )
 ```
-
----
 
 ## `limit()`
 
@@ -757,8 +721,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `range()`
 
 Returns rows using a zero-based start and end range.
@@ -790,8 +752,6 @@ QueryResult Object
         )
 )
 ```
-
----
 
 ## `single()`
 
@@ -835,8 +795,6 @@ QueryResult Object
 )
 ```
 
----
-
 ## `maybeSingle()`
 
 Returns one row if it exists. If nothing matches, `$result->data` is `null`.
@@ -872,19 +830,17 @@ QueryResult Object
 )
 ```
 
----
-
 ## `execute()`
 
 Runs the built query and returns a `QueryResult` object.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->execute()
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -896,7 +852,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
