@@ -2,7 +2,7 @@
 
 `SecureSupabaseDB` is a standalone PHP class that gives you a Supabase-style fluent API while running queries through `PDO`.
 
-## Setup
+### Setup
 
 Include the class once at the top of your PHP file:
 
@@ -20,7 +20,7 @@ $db = SecureSupabaseDB::connect(
 
 All examples below assume you already have the setup above in your file.
 
-## `from()`
+### `from()`
 
 Chooses the table you want to query.
 
@@ -61,7 +61,7 @@ QueryResult Object
 )
 ```
 
-## `select()`
+### `select()`
 
 Chooses which columns to return from the table.
 
