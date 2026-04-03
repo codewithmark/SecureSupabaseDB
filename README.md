@@ -20,6 +20,8 @@ $db = SecureSupabaseDB::connect(
 
 All examples below assume you already have the setup above in your file.
 
+---
+
 ## `from()`
 
 ### What It Does
@@ -63,6 +65,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `table()`
 
 ### What It Does
@@ -93,6 +97,8 @@ QueryResult Object
     [rowCount] => 3
 )
 ```
+
+---
 
 ## `select()`
 
@@ -134,6 +140,8 @@ QueryResult Object
     [sql] => SELECT "id", "name", "email" FROM "users"
 )
 ```
+
+---
 
 ## `insert()`
 
@@ -188,6 +196,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `update()`
 
 ### What It Does
@@ -237,6 +247,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `delete()`
 
 ### What It Does
@@ -283,6 +295,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `eq()`
 
 ### What It Does
@@ -317,6 +331,8 @@ QueryResult Object
         )
 )
 ```
+
+---
 
 ## `neq()`
 
@@ -353,6 +369,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `gt()`
 
 ### What It Does
@@ -387,6 +405,8 @@ QueryResult Object
         )
 )
 ```
+
+---
 
 ## `gte()`
 
@@ -423,6 +443,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `lt()`
 
 ### What It Does
@@ -457,6 +479,8 @@ QueryResult Object
         )
 )
 ```
+
+---
 
 ## `lte()`
 
@@ -493,6 +517,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `like()`
 
 ### What It Does
@@ -528,6 +554,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `ilike()`
 
 ### What It Does
@@ -562,6 +590,8 @@ QueryResult Object
         )
 )
 ```
+
+---
 
 ## `in()`
 
@@ -600,6 +630,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `is()`
 
 ### What It Does
@@ -634,6 +666,8 @@ QueryResult Object
         )
 )
 ```
+
+---
 
 ## `or()`
 
@@ -699,6 +733,8 @@ WHERE "country" = :p0
 AND ("status" = :p1 OR "role" = :p2)
 ```
 
+---
+
 ## `order()`
 
 ### What It Does
@@ -733,6 +769,8 @@ QueryResult Object
         )
 )
 ```
+
+---
 
 ## `limit()`
 
@@ -788,6 +826,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `range()`
 
 ### What It Does
@@ -821,6 +861,8 @@ QueryResult Object
         )
 )
 ```
+
+---
 
 ## `single()`
 
@@ -866,6 +908,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `maybeSingle()`
 
 ### What It Does
@@ -903,19 +947,21 @@ QueryResult Object
 )
 ```
 
+---
+
 ## `execute()`
 
-### 1. Explanation
+### What It Does
 
 Runs the built query and returns a `QueryResult` object.
 
-### 2. Syntax
+### Usage Pattern
 
 ```php
 ->execute()
 ```
 
-### 3. Example
+### Copy-Paste Example
 
 ```php
 $result = $db
@@ -927,7 +973,7 @@ $result = $db
     ->execute();
 ```
 
-### 4. Output
+### Sample Result
 
 ```php
 QueryResult Object
