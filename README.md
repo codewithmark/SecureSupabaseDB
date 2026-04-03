@@ -24,7 +24,70 @@ All examples below assume you already have the setup above in your file.
 
 ---
 
-### from()
+### CRUD Operations
+
+Use these examples if you want the fastest way to understand the basic flow.
+
+#### Create
+
+```php
+$result = $db
+    ->from('users')
+    ->insert([
+        'name' => 'Mark',
+        'email' => 'mark@example.com',
+        'status' => 'active',
+    ])
+    ->select()
+    ->single();
+
+print_r($result->data);
+```
+
+#### Read
+
+```php
+$result = $db
+    ->from('users')
+    ->select('*')
+    ->eq('status', 'active')
+    ->limit(10)
+    ->execute();
+
+print_r($result->data);
+```
+
+#### Update
+
+```php
+$result = $db
+    ->from('users')
+    ->update([
+        'status' => 'inactive',
+    ])
+    ->eq('id', 1)
+    ->select()
+    ->maybeSingle();
+
+print_r($result->data);
+```
+
+#### Delete
+
+```php
+$result = $db
+    ->from('users')
+    ->delete()
+    ->eq('id', 2)
+    ->select('id, email')
+    ->execute();
+
+print_r($result->data);
+```
+
+---
+
+### `from()`
 
 Chooses the table you want to query.
 
