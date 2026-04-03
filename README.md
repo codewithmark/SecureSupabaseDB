@@ -2,7 +2,7 @@
 
 `SecureSupabaseDB` is a standalone PHP class that gives you a Supabase-style fluent API while running queries through `PDO`.
 
-### Setup
+## Setup
 
 Include the class once at the top of your PHP file:
 
@@ -19,6 +19,8 @@ $db = SecureSupabaseDB::connect(
 ```
 
 All examples below assume you already have the setup above in your file.
+
+---
 
 ### `from()`
 
@@ -61,6 +63,8 @@ QueryResult Object
 )
 ```
 
+---
+
 ### `select()`
 
 Chooses which columns to return from the table.
@@ -100,7 +104,9 @@ QueryResult Object
 )
 ```
 
-## `insert()`
+---
+
+### `insert()`
 
 Inserts one or more new rows into the table.
 
@@ -151,7 +157,9 @@ QueryResult Object
 )
 ```
 
-## `update()`
+---
+
+### `update()`
 
 Updates rows that match your filters.
 
@@ -198,7 +206,9 @@ QueryResult Object
 )
 ```
 
-## `delete()`
+---
+
+### `delete()`
 
 Deletes rows that match your filters.
 
@@ -242,7 +252,9 @@ QueryResult Object
 )
 ```
 
-## `eq()`
+---
+
+### `eq()`
 
 Filters rows where a column is equal to a value.
 
@@ -275,7 +287,9 @@ QueryResult Object
 )
 ```
 
-## `neq()`
+---
+
+### `neq()`
 
 Filters rows where a column is not equal to a value.
 
@@ -308,7 +322,9 @@ QueryResult Object
 )
 ```
 
-## `gt()`
+---
+
+### `gt()`
 
 Filters rows where a column is greater than a value.
 
@@ -341,7 +357,9 @@ QueryResult Object
 )
 ```
 
-## `gte()`
+---
+
+### `gte()`
 
 Filters rows where a column is greater than or equal to a value.
 
@@ -374,7 +392,9 @@ QueryResult Object
 )
 ```
 
-## `lt()`
+---
+
+### `lt()`
 
 Filters rows where a column is less than a value.
 
@@ -407,7 +427,9 @@ QueryResult Object
 )
 ```
 
-## `lte()`
+---
+
+### `lte()`
 
 Filters rows where a column is less than or equal to a value.
 
@@ -440,7 +462,9 @@ QueryResult Object
 )
 ```
 
-## `like()`
+---
+
+### `like()`
 
 Filters rows using SQL `LIKE`.
 
@@ -473,7 +497,9 @@ QueryResult Object
 )
 ```
 
-## `ilike()`
+---
+
+### `ilike()`
 
 Filters rows with a case-insensitive text match.
 
@@ -506,7 +532,9 @@ QueryResult Object
 )
 ```
 
-## `in()`
+---
+
+### `in()`
 
 Filters rows where a column matches any value in an array.
 
@@ -541,7 +569,9 @@ QueryResult Object
 )
 ```
 
-## `is()`
+---
+
+### `is()`
 
 Filters rows using `IS NULL`, `IS TRUE`, or `IS FALSE`.
 
@@ -574,7 +604,9 @@ QueryResult Object
 )
 ```
 
-## `or()`
+---
+
+### `or()`
 
 Groups multiple conditions together with `OR`.
 
@@ -636,7 +668,9 @@ WHERE "country" = :p0
 AND ("status" = :p1 OR "role" = :p2)
 ```
 
-## `order()`
+---
+
+### `order()`
 
 Sorts the returned rows.
 
@@ -669,7 +703,9 @@ QueryResult Object
 )
 ```
 
-## `limit()`
+---
+
+### `limit()`
 
 Limits how many rows are returned.
 
@@ -721,7 +757,9 @@ QueryResult Object
 )
 ```
 
-## `range()`
+---
+
+### `range()`
 
 Returns rows using a zero-based start and end range.
 
@@ -753,7 +791,9 @@ QueryResult Object
 )
 ```
 
-## `single()`
+---
+
+### `single()`
 
 Returns exactly one row. It throws an exception if zero rows or more than one row are found.
 
@@ -795,7 +835,9 @@ QueryResult Object
 )
 ```
 
-## `maybeSingle()`
+---
+
+### `maybeSingle()`
 
 Returns one row if it exists. If nothing matches, `$result->data` is `null`.
 
@@ -830,17 +872,19 @@ QueryResult Object
 )
 ```
 
-## `execute()`
+---
+
+### `execute()`
 
 Runs the built query and returns a `QueryResult` object.
 
-### SYNTAX
+### Usage Pattern
 
 ```php
 ->execute()
 ```
 
-### CODE
+### Copy-Paste Example
 
 ```php
 $result = $db
@@ -852,7 +896,7 @@ $result = $db
     ->execute();
 ```
 
-### OUTPUT
+### Sample Result
 
 ```php
 QueryResult Object
