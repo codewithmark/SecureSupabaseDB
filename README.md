@@ -2,7 +2,9 @@
 
 `SecureSupabaseDB` is a standalone PHP class that gives you a Supabase-style fluent API while running queries through `PDO`.
 
-## Setup
+---
+
+### Setup
 
 Include the class once at the top of your PHP file:
 
