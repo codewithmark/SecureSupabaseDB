@@ -24,17 +24,15 @@ All examples below assume you already have the setup above in your file.
 
 ## `from()`
 
- What It Does
-
 Chooses the table you want to query.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 $db->from('table_name')
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -43,7 +41,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -67,53 +65,18 @@ QueryResult Object
 
 ---
 
-## `table()`
-
-### What It Does
-
-`table()` is the same as `from()`. It is just another name for selecting a table.
-
-### Usage Pattern
-
-```php
-$db->table('table_name')
-```
-
-### Copy-Paste Example
-
-```php
-$result = $db
-    ->table('users')
-    ->select('*')
-    ->execute();
-```
-
-### Sample Result
-
-```php
-QueryResult Object
-(
-    [sql] => SELECT * FROM "users"
-    [rowCount] => 3
-)
-```
-
----
-
 ## `select()`
-
-### What It Does
 
 Chooses which columns to return from the table.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->select('*')
 ->select('id, name, email')
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -122,7 +85,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -145,11 +108,9 @@ QueryResult Object
 
 ## `insert()`
 
-### What It Does
-
 Inserts one or more new rows into the table.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->insert([
@@ -158,7 +119,7 @@ Inserts one or more new rows into the table.
 ])
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -172,7 +133,7 @@ $result = $db
     ->single();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -200,11 +161,9 @@ QueryResult Object
 
 ## `update()`
 
-### What It Does
-
 Updates rows that match your filters.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->update([
@@ -212,7 +171,7 @@ Updates rows that match your filters.
 ])
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -225,7 +184,7 @@ $result = $db
     ->maybeSingle();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -251,17 +210,15 @@ QueryResult Object
 
 ## `delete()`
 
-### What It Does
-
 Deletes rows that match your filters.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->delete()
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -272,7 +229,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -299,17 +256,15 @@ QueryResult Object
 
 ## `eq()`
 
-### What It Does
-
 Filters rows where a column is equal to a value.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->eq('column_name', 'value')
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -319,7 +274,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -336,17 +291,15 @@ QueryResult Object
 
 ## `neq()`
 
-### What It Does
-
 Filters rows where a column is not equal to a value.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->neq('column_name', 'value')
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -356,7 +309,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -373,17 +326,15 @@ QueryResult Object
 
 ## `gt()`
 
-### What It Does
-
 Filters rows where a column is greater than a value.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->gt('column_name', 100)
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -393,7 +344,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -410,17 +361,15 @@ QueryResult Object
 
 ## `gte()`
 
-### What It Does
-
 Filters rows where a column is greater than or equal to a value.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->gte('column_name', 100)
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -430,7 +379,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -447,17 +396,15 @@ QueryResult Object
 
 ## `lt()`
 
-### What It Does
-
 Filters rows where a column is less than a value.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->lt('column_name', 10)
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -467,7 +414,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -484,17 +431,15 @@ QueryResult Object
 
 ## `lte()`
 
-### What It Does
-
 Filters rows where a column is less than or equal to a value.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->lte('column_name', 10)
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -504,7 +449,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -521,17 +466,15 @@ QueryResult Object
 
 ## `like()`
 
-### What It Does
-
 Filters rows using SQL `LIKE`.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->like('column_name', '%text%')
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -541,7 +484,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -558,17 +501,15 @@ QueryResult Object
 
 ## `ilike()`
 
-### What It Does
-
 Filters rows with a case-insensitive text match.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->ilike('column_name', '%text%')
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -578,7 +519,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -595,17 +536,15 @@ QueryResult Object
 
 ## `in()`
 
-### What It Does
-
 Filters rows where a column matches any value in an array.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->in('column_name', ['value1', 'value2'])
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -615,7 +554,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -634,18 +573,16 @@ QueryResult Object
 
 ## `is()`
 
-### What It Does
-
 Filters rows using `IS NULL`, `IS TRUE`, or `IS FALSE`.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->is('column_name', null)
 ->is('column_name', true)
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -655,7 +592,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -671,11 +608,9 @@ QueryResult Object
 
 ## `or()`
 
-### What It Does
-
 Groups multiple conditions together with `OR`.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->or([
@@ -684,7 +619,7 @@ Groups multiple conditions together with `OR`.
 ])
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -697,7 +632,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -737,18 +672,16 @@ AND ("status" = :p1 OR "role" = :p2)
 
 ## `order()`
 
-### What It Does
-
 Sorts the returned rows.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->order('column_name')
 ->order('column_name', false)
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -758,7 +691,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -774,17 +707,15 @@ QueryResult Object
 
 ## `limit()`
 
-### What It Does
-
 Limits how many rows are returned.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->limit(2)
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -794,7 +725,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -830,17 +761,15 @@ QueryResult Object
 
 ## `range()`
 
-### What It Does
-
 Returns rows using a zero-based start and end range.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->range(0, 9)
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -850,7 +779,7 @@ $result = $db
     ->execute();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -866,17 +795,15 @@ QueryResult Object
 
 ## `single()`
 
-### What It Does
-
 Returns exactly one row. It throws an exception if zero rows or more than one row are found.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->single()
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -886,7 +813,7 @@ $result = $db
     ->single();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -912,17 +839,15 @@ QueryResult Object
 
 ## `maybeSingle()`
 
-### What It Does
-
 Returns one row if it exists. If nothing matches, `$result->data` is `null`.
 
-### Usage Pattern
+### SYNTAX
 
 ```php
 ->maybeSingle()
 ```
 
-### Copy-Paste Example
+### CODE
 
 ```php
 $result = $db
@@ -932,7 +857,7 @@ $result = $db
     ->maybeSingle();
 ```
 
-### Sample Result
+### OUTPUT
 
 ```php
 QueryResult Object
@@ -950,8 +875,6 @@ QueryResult Object
 ---
 
 ## `execute()`
-
-### What It Does
 
 Runs the built query and returns a `QueryResult` object.
 
